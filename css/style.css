@@ -1,0 +1,12 @@
+g line {
+  display: none;
+}
+g text {
+  font-size: 14px;
+}
+.seed-bar {
+  text-align: center;
+}
+input {
+  width: 80px;
+}
