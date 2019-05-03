@@ -9,10 +9,6 @@ class BarGraph {
     this.barSpacing = 5;
   }
 
-  getBarHeight(num) {
-    return Math.abs(this.y(0) - this.y(num));
-  }
-
   getRandomNumbers(seed, len, min, max) {
     const nums = [];
     for (var i = 0; i < len; i += 1) {
@@ -58,6 +54,10 @@ class BarGraph {
     this.barGroup = svg
       .append("g")
       .attr("transform", `translate(${this.margin.left},${this.margin.top})`);
+  }
+
+  getBarHeight(num) {
+    return Math.abs(this.y(0) - this.y(num));
   }
 
   drawBars() {
@@ -116,5 +116,9 @@ const seedButton = document.getElementById("seedButton");
 seedButton.addEventListener("click", event => {
   event.preventDefault();
   seed = Number(document.getElementById("seed").value);
-  bar.draw(seed);
+  if (seed < 0 || seed > 10) {
+    alert("Enter a number between 0 and 10.");
+  } else {
+    bar.draw(seed);
+  }
 });
